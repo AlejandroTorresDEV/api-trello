@@ -5,7 +5,7 @@ import { DataManagerService } from '../data-manager.service';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.sass']
+  styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
   @Input() list:List;
