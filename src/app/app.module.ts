@@ -8,6 +8,7 @@ import { AddNewListComponent } from './add-new-list/add-new-list.component';
 import { ListComponent } from './list/list.component';
 import { ShowListsComponent } from './show-lists/show-lists.component';
 import { TaskComponent } from './task/task.component';
+import { DataManagerService } from "./data-manager.service";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { TaskComponent } from './task/task.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [DataManagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
