@@ -8,7 +8,6 @@ import { DataManagerService } from '../data-manager.service';
   styleUrls: ['./board.component.sass']
 })
 export class BoardComponent implements OnInit {
-
   data: Data;
   constructor(private dataManager: DataManagerService) {}
 
