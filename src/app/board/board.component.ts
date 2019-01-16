@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Data } from '../models.interface';
+import { DataManagerService } from '../data-manager.service';
 
 @Component({
   selector: 'app-board',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoardComponent implements OnInit {
 
-  constructor() { }
+  data: Data;
+  constructor(private dataManager: DataManagerService) {}
 
   ngOnInit() {
+    this.data = this.dataManager.getData();
+    console.log(this.data);
   }
 
 }
