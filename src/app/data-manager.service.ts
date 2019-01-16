@@ -71,5 +71,4 @@ export class DataManagerService {
     };
     this.data.lists.push(newList);
   }
-
 }
