@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
+import { List } from '../models.interface';
+import { DataManagerService } from '../data-manager.service';
 
 @Component({
   selector: 'app-list',
@@ -6,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.component.sass']
 })
 export class ListComponent implements OnInit {
+  @Input() list:List;
 
   constructor() { }
 
