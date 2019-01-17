@@ -9,6 +9,8 @@ import { DataManagerService } from '../data-manager.service';
 export class TaskComponent implements OnInit {
   @Input() task: Task;
 
+  completada : boolean = false;
+
   colours = [
     {name: "blue"},
     {name: "red"},
@@ -34,6 +36,15 @@ export class TaskComponent implements OnInit {
   editColorTask(){
     this.task.color = this.selectedValue;
     this.dataManagerService.editColorTask(this.task.listId,this.task.taskId,this.task);
+  }
+
+  changeTaskDone(){
+    this.completada = !this.completada;
+    if(this.completada){
+      this.task.color = "grey";
+    }else{
+      this.task.color = "white";
+    }
   }
 
 }

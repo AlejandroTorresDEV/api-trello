@@ -30,7 +30,7 @@ export class ListComponent implements OnInit {
     this.editing = true;
   }
 
-  editNameList(ev){
+  editNameList(){
     console.log(this.list)
     this.oldName = this.list.name;
     this.dataService.editListName(this.list);
