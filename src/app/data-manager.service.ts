@@ -64,7 +64,7 @@ export class DataManagerService {
     return this.data;
   }
 
-  addNewList(name : string){
+  addNewList(name: string) {
     const now = new Date();
     const newList: List = {
       listId: Date.now(),
@@ -76,13 +76,34 @@ export class DataManagerService {
     this.data.lists.push(newList);
   }
 
-  deleteTask(listId: number, taskId: number){
+  deleteTask(listId: number, taskId: number) {
     this.data.lists = this.data.lists.map(list => {
-       if(list.listId === listId) {
-          list.tasks = list.tasks.filter(task => task.taskId !== taskId)
-       }
+      if (list.listId === listId) {
+        list.tasks = list.tasks.filter(task => task.taskId !== taskId);
+      }
       return list
     });
     console.log(this.data2[0]);
+  }
+
+  addNewTask(text: string, list: List) {
+    const now = new Date();
+    const newTask: Task = {
+      listId: list.listId,
+      taskId: Date.now(),
+      text,
+      completed: false,
+      color: 'white',
+      createdAt: now,
+      modifiedAt: now,
+    };
+
+    this.data.lists = this.data.lists.map(listObj => {
+      if (listObj.listId === list.listId) {
+        listObj.tasks.push(newTask);
+      }
+      return listObj;
+    });
+
   }
 }

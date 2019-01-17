@@ -10,9 +10,15 @@ import { DataManagerService } from '../data-manager.service';
 export class ListComponent implements OnInit {
   @Input() list:List;
 
-  constructor() { }
+  constructor(private dataService : DataManagerService) { }
 
   ngOnInit() {
+  }
+
+  addNewTask(ev){
+    const text = ev.target.value.trim();
+    this.dataService.addNewTask(text,this.list);
+    ev.target.value = '';
   }
 
 }
