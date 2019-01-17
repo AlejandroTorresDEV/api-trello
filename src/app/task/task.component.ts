@@ -9,6 +9,18 @@ import { DataManagerService } from '../data-manager.service';
 export class TaskComponent implements OnInit {
   @Input() task: Task;
 
+  colours = [
+    {name: "blue"},
+    {name: "red"},
+    {name: "yellow"}
+  ];
+  
+ selectedValue : string = this.colours[0].name;
+
+ select(){
+   console.log(this.selectedValue);
+ }
+
   constructor(private dataManagerService: DataManagerService) { }
 
   ngOnInit() {
@@ -17,6 +29,11 @@ export class TaskComponent implements OnInit {
   deleteTask(){
     console.log("Eliminado")
     this.dataManagerService.deleteTask(this.task.listId,this.task.taskId);
+  }
+
+  editColorTask(){
+    this.task.color = this.selectedValue;
+    this.dataManagerService.editColorTask(this.task.listId,this.task.taskId,this.task);
   }
 
 }

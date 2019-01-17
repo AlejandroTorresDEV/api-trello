@@ -7,8 +7,7 @@ import { List, Task } from './models.interface';
 
 export class DataManagerService {
 
-  tasks: Array<Task> = [];
-  data2: Array<List> = [];
+
 
   data: { lists: Array<List> } = {
     lists: [
@@ -23,7 +22,7 @@ export class DataManagerService {
             taskId: 0,
             text: 'aprender angular',
             completed: false,
-            color: 'white',
+            color: 'grey',
             createdAt: new Date(),
             modifiedAt: new Date(),
           },
@@ -32,7 +31,7 @@ export class DataManagerService {
             taskId: 1,
             text: 'aprender js',
             completed: false,
-            color: 'white',
+            color: 'grey',
             createdAt: new Date(),
             modifiedAt: new Date(),
           },
@@ -49,7 +48,7 @@ export class DataManagerService {
             taskId: 0,
             text: 'aprender typescript',
             completed: false,
-            color: 'white',
+            color: 'grey',
             createdAt: new Date(),
             modifiedAt: new Date(),
           },
@@ -83,7 +82,6 @@ export class DataManagerService {
       }
       return list
     });
-    console.log(this.data2[0]);
   }
 
   addNewTask(text: string, list: List) {
@@ -93,7 +91,7 @@ export class DataManagerService {
       taskId: Date.now(),
       text,
       completed: false,
-      color: 'white',
+      color: 'grey',
       createdAt: now,
       modifiedAt: now,
     };
@@ -104,12 +102,43 @@ export class DataManagerService {
       }
       return listObj;
     });
+
   }
 
   editListName(list: List) {
-    this.data.lists = this.data.lists.map(listObj => (listObj.listId === list.listId ? list : listObj));
+    this.data.lists = this.data.lists.map(
+      listObj => (listObj.listId === list.listId ? list : listObj));
     console.log(this.data);
+  }
 
+  editColorTask(listid: number, taskId: number,task : Task){
+    this.data.lists = this.data.lists.map(listObj => {
+      if (listObj.listId === listid) {
+        listObj.tasks.forEach(function (elemento, indice, array) {
+          if(elemento.taskId === taskId ){
+            listObj.tasks[indice] = task;   
+            console.log(listObj.tasks[indice]);
+          }
+      });
+      }
+      return listObj;
+    });
+
+    
+    /*this.data.lists = this.data.lists.map(list => {
+      if (list.listId === listId) {
+        console.log(task.color);
+          this.tasks = this.tasks.map(task => {
+            if(task.taskId = 22){
+              console.log(task.color);
+              return task;
+            }else{
+              return task;
+            }
+          })
+      }
+      return list
+    });*/
   }
 
 }

@@ -1,7 +1,16 @@
-<div class="task">
+<div class="task" [style.background-color]="task.color">
     <h4>{{ task.text }}</h4>
     <div class="controls">
         <i class="material-icons" (click)="deleteTask()">delete</i>
-        <i class="material-icons" (click)=editList()>edit</i>
+        <i class="material-icons" >edit</i>
+        <select [(ngModel)]="selectedValue" (ngModelChange)="editColorTask()">
+                <option *ngFor="let c of colours" [ngValue]="c.name">{{c.name}}
+                </option>
+        </select>
     </div>
 </div>
+
+
+
+       
+        
