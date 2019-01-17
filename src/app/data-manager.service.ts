@@ -77,14 +77,12 @@ export class DataManagerService {
   }
 
   deleteTask(listId: number, taskId: number){
-
     this.data.lists = this.data.lists.map(list => {
        if(list.listId === listId) {
           list.tasks = list.tasks.filter(task => task.taskId !== taskId)
        }
       return list
     });
-
     console.log(this.data2[0]);
   }
 }
