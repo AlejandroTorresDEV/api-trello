@@ -16,7 +16,9 @@ export class AddNewListComponent implements OnInit {
 
   addElementList(eve){
     if(eve.target.value.trim() != ''){
-      this.dataManagerService.addNewList(eve.target.value.trim());
+      const text = eve.target.value.trim();
+      let capitaliceText = text.charAt(0).toUpperCase() + text.slice(1);
+      this.dataManagerService.addNewList(capitaliceText);
       eve.target.value = '';
     }
   }

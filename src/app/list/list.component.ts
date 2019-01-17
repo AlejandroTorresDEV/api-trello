@@ -18,7 +18,8 @@ export class ListComponent implements OnInit {
 
   addNewTask(ev){
     const text = ev.target.value.trim();
-    this.dataService.addNewTask(text,this.list);
+    let capitaliceText = text.charAt(0).toUpperCase() + text.slice(1);
+    this.dataService.addNewTask(capitaliceText,this.list);
     ev.target.value = '';
   }
 
