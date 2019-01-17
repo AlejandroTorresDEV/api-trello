@@ -104,6 +104,12 @@ export class DataManagerService {
       }
       return listObj;
     });
+  }
+
+  editListName(list: List) {
+    this.data.lists = this.data.lists.map(listObj => (listObj.listId === list.listId ? list : listObj));
+    console.log(this.data);
 
   }
+
 }

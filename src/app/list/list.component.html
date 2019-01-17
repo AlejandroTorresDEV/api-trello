@@ -1,8 +1,14 @@
 <div class="list">
-    <h1 class="styleName">{{ list.name }}</h1>
+    <h1>
+        <span [hidden]="editing" (dblclick)="editList(editInput)" class="styleName" >{{ list.name }}</span>
+        <span [hidden]="!editing">
+         <input #editInput type="text" [(ngModel)]="list.name" (keyup.enter)="editNameList($event)" (blur)="cancelEdit()" >
+        </span>
+    </h1>
     <div class="tasks"><app-task *ngFor="let taskObj of list.tasks" [task]="taskObj"></app-task></div>
     <input type="text" placeholder="add task"(keyup.enter)="addNewTask($event)" />
     <div class="controls">
         <i class="material-icons">delete</i>
+        <i class="material-icons" (click)=editList(editInput)>edit</i>
     </div>
   </div>

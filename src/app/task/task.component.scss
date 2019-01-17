@@ -8,6 +8,8 @@
 .controls{
     opacity: 0;
     transition: opacity 1s;
+    display: flex;
+    justify-content: flex-start;
 }
 
 .task:hover .controls{
