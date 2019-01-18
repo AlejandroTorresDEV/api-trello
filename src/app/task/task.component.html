@@ -5,10 +5,13 @@
       </option>
     </select>
   </div>
-  <h4>{{ task.text }}</h4>
+  <span [hidden]="editing" id="stileTask"  (dblclick)="editTask(editInput)">{{ task.text }}</span>
+    <span [hidden]="!editing">
+      <input #editInput type="text" [(ngModel)]="task.text" (keyup.enter)="editTaskText()" (blur)="cancelEdit()">
+    </span>
   <div class="controls">
     <i *ngIf="!completada" class="material-icons" (click)="deleteTask()">delete</i>
-    <i *ngIf="!completada" class="material-icons" (click)=changeTaskDone()>edit</i>
+    <i *ngIf="!completada" class="material-icons" (click)=editTask(editInput)>edit</i>
     <i class="material-icons" (click)=changeTaskDone()>done</i>
   </div>
 </div>

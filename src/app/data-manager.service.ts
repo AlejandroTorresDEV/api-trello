@@ -6,21 +6,18 @@ import { List, Task } from './models.interface';
 })
 
 export class DataManagerService {
-
-
-
   data: { lists: Array<List> } = {
     lists: [
       {
         listId: 0,
         createdAt: new Date(),
         modifiedAt: new Date(),
-        name: 'to do',
+        name: 'To do',
         tasks: [
           {
             listId: 0,
             taskId: 0,
-            text: 'aprender angular',
+            text: 'Aprender angular',
             completed: false,
             color: 'white',
             createdAt: new Date(),
@@ -29,7 +26,7 @@ export class DataManagerService {
           {
             listId: 0,
             taskId: 1,
-            text: 'aprender js',
+            text: 'Aprender js',
             completed: false,
             color: 'white',
             createdAt: new Date(),
@@ -41,12 +38,12 @@ export class DataManagerService {
         listId: 1,
         createdAt: new Date(),
         modifiedAt: new Date(),
-        name: 'doing',
+        name: 'Doing',
         tasks: [
           {
             listId: 1,
             taskId: 0,
-            text: 'aprender typescript',
+            text: 'Aprender typescript',
             completed: false,
             color: 'white',
             createdAt: new Date(),
@@ -91,7 +88,7 @@ export class DataManagerService {
       taskId: Date.now(),
       text,
       completed: false,
-      color: 'grey',
+      color: 'white',
       createdAt: now,
       modifiedAt: now,
     };
@@ -108,21 +105,20 @@ export class DataManagerService {
   editListName(list: List) {
     this.data.lists = this.data.lists.map(
       listObj => (listObj.listId === list.listId ? list : listObj));
-    console.log(this.data);
   }
 
-  editColorTask(listid: number, taskId: number,task : Task){
+  editTask(task : Task){
     this.data.lists = this.data.lists.map(listObj => {
-      if (listObj.listId === listid) {
-        listObj.tasks.forEach(function (elemento, indice, array) {
-          if(elemento.taskId === taskId ){
+      if (listObj.listId ===task.listId) {
+        listObj.tasks.forEach(function (elemento, indice) {
+          if(elemento.taskId === task.taskId ){
             listObj.tasks[indice] = task;   
-            console.log(listObj.tasks[indice]);
           }
       });
       }
       return listObj;
     });
+    console.log(this.data);
 
     
     /*this.data.lists = this.data.lists.map(list => {
